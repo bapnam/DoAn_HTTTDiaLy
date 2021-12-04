@@ -276,7 +276,7 @@ INSERT INTO DiaChi_TGDD VALUES(
 	8,
 	3	);
 GO
-
+/*
 --Ninh kieu
 INSERT INTO DiaChi_TGDD VALUES(
 	N'',
