@@ -1,28 +1,37 @@
 ﻿USE master
 GO
 
+--	Tạo database
 CREATE DATABASE MapTGDD
-	--ON PRIMARY 
-	--( 
-	--	NAME = MapTGDD_Data,
-	--	FILENAME = 'E:\SQL\MapTGDD\MapTGDD_Data.mdf',
-	--	SIZE = 100MB,
-	--	MAXSIZE = 200MB,
-	--	Filegrowth = 20MB
-	--)
-	--LOG ON
-	--(
-	--	NAME = MapTGDD_Log,
-	--	FILENAME = 'E:\SQL\MapTGDD\MapTGDD_Log.ldf',
-	--	SIZE = 10MB,
-	--	MAXSIZE = 20MB,
-	--	Filegrowth = 20MB
-	--)
+/*	ON PRIMARY 
+	( 
+		NAME = MapTGDD_Data,
+		FILENAME = 'E:\SQL\MapTGDD\MapTGDD_Data.mdf',
+		SIZE = 100MB,
+		MAXSIZE = 200MB,
+		Filegrowth = 20MB
+	)
+	LOG ON
+	(
+		NAME = MapTGDD_Log,
+		FILENAME = 'E:\SQL\MapTGDD\MapTGDD_Log.ldf',
+		SIZE = 10MB,
+		MAXSIZE = 20MB,
+		Filegrowth = 20MB
+	)
+*/
 GO
 
 USE MapTGDD
 GO
 
+/*--	Đoạn lệnh dùng để xóa database
+USE master
+GO
+
+DROP DATABASE MapTGDD;
+GO
+*/
 
 -- TAO BANG TINH
 CREATE TABLE Tinh
@@ -77,6 +86,10 @@ GO
 
 -- Them bang tinh
 INSERT INTO Tinh VALUES('CT', N'Cần Thơ');
+INSERT INTO Tinh VALUES('BL', N'Bạc Liêu');
+INSERT INTO Tinh VALUES('KG', N'Kiên Giang');
+INSERT INTO Tinh VALUES('CM', N'Cà Mau');
+
 GO
 
 -- Them bang quan huyen 
@@ -91,10 +104,19 @@ INSERT INTO QuanHuyen VALUES('TL', N'Thới Lai',		'CT');--8
 INSERT INTO QuanHuyen VALUES('VT', N'Vĩnh Thạnh',	'CT');--9
 GO
 
+-- Them Quan Huyen khac
+INSERT INTO QuanHuyen VALUES('TPBL', N'TP Bạc Liêu',	'BL');
+INSERT INTO QuanHuyen VALUES('TPRG', N'TP Rạch Giá',	'KG');
+INSERT INTO QuanHuyen VALUES('CN', N'Cái Nước',	'CM');
+INSERT INTO QuanHuyen VALUES('NC', N'Năm Căn',	'CM');
+GO
+
 -- Them bang nguoi dung
 INSERT INTO NguoiDung VALUES('ND1', N'Nguyễn Văn',		N'Minh',		'ND01',	'BT');
 INSERT INTO NguoiDung VALUES('ND2', N'Ngô Duy',			N'Nam',			'ND02',	'NK');
 INSERT INTO NguoiDung VALUES('ND3', N'Phan Hải',		N'Dương',		'ND03',	'CR');
+INSERT INTO NguoiDung VALUES('ND04', N'Ngô Duy',			N'Nam',			'12345',	'NK');
+
 GO
 
 
@@ -155,7 +177,7 @@ GO
 INSERT INTO DiaChi_TGDD VALUES(
 	N'Thế Giới Di Động Số 8 Hòa Bình, P. An Cư, Q. Ninh Kiều, TP. Cần Thơ',
 	geometry::STGeomFromText ( 'POINT ( 10.03489 105.7855 )', 0), 'NK'	);
-go
+
 
 INSERT INTO DiaChi_TGDD VALUES(
 	N'Thế Giới Di Động 01 Bis, KDC 91B, Đường Nguyễn Văn Linh, P.An Khánh, Q. Ninh Kiều, TP.Cần Thơ.',
@@ -361,191 +383,7 @@ INSERT INTO DiaChi_TGDD VALUES(
 	geometry::STGeomFromText ( 'POINT (10.065477 105.559349)', 0),
 	'TL'	);
 GO
-/*
---Ninh kieu
-INSERT INTO DiaChi_TGDD VALUES(
-	N'',
-	geometry::STGeomFromText ( 'POINT (  )', 0),
-	,
-		);
 
-INSERT INTO DiaChi_TGDD VALUES(
-	N'',
-	geometry::STGeomFromText ( 'POINT (  )', 0),
-	,
-		);
-
-INSERT INTO DiaChi_TGDD VALUES(
-	N'',
-	geometry::STGeomFromText ( 'POINT (  )', 0),
-	,
-		);
-
-INSERT INTO DiaChi_TGDD VALUES(
-	N'',
-	geometry::STGeomFromText ( 'POINT (  )', 0),
-	,
-		);
-
-INSERT INTO DiaChi_TGDD VALUES(
-	N'',
-	geometry::STGeomFromText ( 'POINT (  )', 0),
-	,
-		);
-
-INSERT INTO DiaChi_TGDD VALUES(
-	N'',
-	geometry::STGeomFromText ( 'POINT (  )', 0),
-	,
-		);
-
-INSERT INTO DiaChi_TGDD VALUES(
-	N'',
-	geometry::STGeomFromText ( 'POINT (  )', 0),
-	,
-		);
-
-INSERT INTO DiaChi_TGDD VALUES(
-	N'',
-	geometry::STGeomFromText ( 'POINT (  )', 0),
-	,
-		);
-
-INSERT INTO DiaChi_TGDD VALUES(
-	N'',
-	geometry::STGeomFromText ( 'POINT (  )', 0),
-	,
-		);
-
-INSERT INTO DiaChi_TGDD VALUES(
-	N'',
-	geometry::STGeomFromText ( 'POINT (  )', 0),
-	,
-		);
-
-INSERT INTO DiaChi_TGDD VALUES(
-	N'',
-	geometry::STGeomFromText ( 'POINT (  )', 0),
-	,
-		);
-
-INSERT INTO DiaChi_TGDD VALUES(
-	N'',
-	geometry::STGeomFromText ( 'POINT (  )', 0),
-	,
-		);
-
-INSERT INTO DiaChi_TGDD VALUES(
-	N'',
-	geometry::STGeomFromText ( 'POINT (  )', 0),
-	,
-		);
-
-----------------------------------------------------------------------------------------------------------
----- Them bang xa phuong
----- Binh Thuy
---INSERT INTO XaPhuong VALUES(N'An Thới',			1);
---INSERT INTO XaPhuong VALUES(N'Long Tuyền',		1);
---INSERT INTO XaPhuong VALUES(N'Bình Thủy',		1);
---INSERT INTO XaPhuong VALUES(N'Bùi Hữu Nghĩa',	1);
---INSERT INTO XaPhuong VALUES(N'Long Hòa',		1);
---INSERT INTO XaPhuong VALUES(N'Thới An Đông',	1);
---INSERT INTO XaPhuong VALUES(N'Trà An',			1);
---INSERT INTO XaPhuong VALUES(N'Trà Nóc',			1);
-
----- Cai rang
---INSERT INTO XaPhuong VALUES(N'Lê Bình',		3);
---INSERT INTO XaPhuong VALUES(N'Hưng Phú',	3);
---INSERT INTO XaPhuong VALUES(N'Hưng Thạnh',	3);
---INSERT INTO XaPhuong VALUES(N'Ba Láng',		3);
---INSERT INTO XaPhuong VALUES(N'Thường Thạnh',3);
---INSERT INTO XaPhuong VALUES(N'Phú Thứ',		3);
---INSERT INTO XaPhuong VALUES(N'Tân Phú',		3);
-
----- Ninh Kieu
---INSERT INTO XaPhuong VALUES(N'Cái Khế',		2);
---INSERT INTO XaPhuong VALUES(N'An Hòa',		2);
---INSERT INTO XaPhuong VALUES(N'Thới Bình',	2);
---INSERT INTO XaPhuong VALUES(N'An Nghiệp',	2);
---INSERT INTO XaPhuong VALUES(N'An Cư',		2);
---INSERT INTO XaPhuong VALUES(N'Tân An',		2);
---INSERT INTO XaPhuong VALUES(N'An Phú',		2);
---INSERT INTO XaPhuong VALUES(N'Xuân Khánh',	2);
---INSERT INTO XaPhuong VALUES(N'Hưng Lợi',	2);
---INSERT INTO XaPhuong VALUES(N'An Khánh',	2);
---INSERT INTO XaPhuong VALUES(N'An Bình',		2);
-
----- Ô Môn
---INSERT INTO XaPhuong VALUES(N'Châu Văn Liêm',	5);
---INSERT INTO XaPhuong VALUES(N'Thới Hòa',		5);
---INSERT INTO XaPhuong VALUES(N'Thới Long',		5);
---INSERT INTO XaPhuong VALUES(N'Long Hưng',		5);
---INSERT INTO XaPhuong VALUES(N'Thới An',			5);
---INSERT INTO XaPhuong VALUES(N'Phước Thới',		5);
---INSERT INTO XaPhuong VALUES(N'Trường Lạc',		5);
-
----- Thot Not
---INSERT INTO XaPhuong VALUES(N'Thốt Nốt',	6);
---INSERT INTO XaPhuong VALUES(N'Thới Thuận',	6);
---INSERT INTO XaPhuong VALUES(N'Thuận An',	6);
---INSERT INTO XaPhuong VALUES(N'Tân Lộc',		6);
---INSERT INTO XaPhuong VALUES(N'Trung Nhất',	6);
---INSERT INTO XaPhuong VALUES(N'Thạnh Hòa',	6);
---INSERT INTO XaPhuong VALUES(N'Trung Kiên',	6);
---INSERT INTO XaPhuong VALUES(N'Tân Hưng',	6);
---INSERT INTO XaPhuong VALUES(N'Thuận Hưng',	6);
-
----- Co Do
---INSERT INTO XaPhuong VALUES(N'Thị trấn Cờ Đỏ',	7);
---INSERT INTO XaPhuong VALUES(N'Xã Trung An',		7);
---INSERT INTO XaPhuong VALUES(N'Xã Trung Thạnh',	7);
---INSERT INTO XaPhuong VALUES(N'Xã Thạnh Phú',	7);
---INSERT INTO XaPhuong VALUES(N'Xã Trung Hưng',	7);
---INSERT INTO XaPhuong VALUES(N'Xã Thới Hưng',	7);
---INSERT INTO XaPhuong VALUES(N'Xã Đông Hiệp',	7);
---INSERT INTO XaPhuong VALUES(N'Xã Đông Thắng',	7);
---INSERT INTO XaPhuong VALUES(N'Xã Thới Đông',	7);
---INSERT INTO XaPhuong VALUES(N'Xã Thới Xuân',	7);
-
----- Phong Dien
---INSERT INTO XaPhuong VALUES(N'Thị trấn Phong Điền',	4);
---INSERT INTO XaPhuong VALUES(N'Xã Nhơn Ái',			4);
---INSERT INTO XaPhuong VALUES(N'Xã Giai Xuân',		4);
---INSERT INTO XaPhuong VALUES(N'Xã Tân Thới',			4);
---INSERT INTO XaPhuong VALUES(N'Xã Trường Long',		4);
---INSERT INTO XaPhuong VALUES(N'Xã Mỹ Khánh',			4);
---INSERT INTO XaPhuong VALUES(N'Xã Nhơn Nghĩa',		4);
-
----- Thoi Lai
---INSERT INTO XaPhuong VALUES(N'Thị trấn Thới Lai',	8);
---INSERT INTO XaPhuong VALUES(N'Xã Thới Thạnh',		8);
---INSERT INTO XaPhuong VALUES(N'Xã Tân Thạnh',		8);
---INSERT INTO XaPhuong VALUES(N'Xã Xuân Thắng',		8);
---INSERT INTO XaPhuong VALUES(N'Xã Đông Bình',		8);
---INSERT INTO XaPhuong VALUES(N'Xã Đông Thuận',		8);
---INSERT INTO XaPhuong VALUES(N'Xã Thới Tân',			8);
---INSERT INTO XaPhuong VALUES(N'Xã Trường Thắng',		8);
---INSERT INTO XaPhuong VALUES(N'Xã Định Môn',			8);
---INSERT INTO XaPhuong VALUES(N'Xã Trường Thành',		8);
---INSERT INTO XaPhuong VALUES(N'Xã Trường Xuân',		8);
---INSERT INTO XaPhuong VALUES(N'Xã Trường Xuân A',	8);
---INSERT INTO XaPhuong VALUES(N'Xã Trường Xuân B',	8);
-
----- Vinh Thanh
---INSERT INTO XaPhuong VALUES(N'Xã Vĩnh Bình',		9);
---INSERT INTO XaPhuong VALUES(N'Thị trấn Thanh An',	9);
---INSERT INTO XaPhuong VALUES(N'Thị trấn Vĩnh Thạnh',	9);
---INSERT INTO XaPhuong VALUES(N'Xã Thạnh Mỹ',			9);
---INSERT INTO XaPhuong VALUES(N'Xã Vĩnh Trinh',		9);
---INSERT INTO XaPhuong VALUES(N'Xã Thạnh An',			9);
---INSERT INTO XaPhuong VALUES(N'Xã Thạnh Tiến',		9);
---INSERT INTO XaPhuong VALUES(N'Xã Thạnh Thắng',		9);
---INSERT INTO XaPhuong VALUES(N'Xã Thạnh Lợi',		9);
---INSERT INTO XaPhuong VALUES(N'Xã Thạnh Quới',		9);
---INSERT INTO XaPhuong VALUES(N'Xã Thạnh Lộc',		9);
-
---GO
-*/
 ---------------------------------------------------------------------------------------
 -- Thêm thủ tục Login
 CREATE PROCEDURE Sp_Account_Login @UserName varchar(10), @Password varchar(20)

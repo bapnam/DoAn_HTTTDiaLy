@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MapTGDDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DiaChi_TGDD">
+    <Key>
+      <PropertyRef Name="MaDC" />
+    </Key>
+    <Property Name="MaDC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDC" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ToaDo" Type="Geometry" />
+    <Property Name="MaQH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="QuanHuyen" Relationship="Self.fk_DC_QH" FromRole="DiaChi_TGDD" ToRole="QuanHuyen" />
+  </EntityType>
+  <EntityType Name="NguoiDung">
+    <Key>
+      <PropertyRef Name="MaND" />
+    </Key>
+    <Property Name="MaND" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ho" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Ten" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="MaQH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="QuanHuyen" Relationship="Self.fk_ND_QH" FromRole="NguoiDung" ToRole="QuanHuyen" />
+  </EntityType>
+  <EntityType Name="QuanHuyen">
+    <Key>
+      <PropertyRef Name="MaQH" />
+    </Key>
+    <Property Name="MaQH" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenQH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DiaChi_TGDD" Relationship="Self.fk_DC_QH" FromRole="QuanHuyen" ToRole="DiaChi_TGDD" />
+    <NavigationProperty Name="NguoiDungs" Relationship="Self.fk_ND_QH" FromRole="QuanHuyen" ToRole="NguoiDung" />
+    <NavigationProperty Name="Tinh" Relationship="Self.fk_QH_T" FromRole="QuanHuyen" ToRole="Tinh" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tinh">
+    <Key>
+      <PropertyRef Name="MaTinh" />
+    </Key>
+    <Property Name="MaTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TenTinh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="QuanHuyens" Relationship="Self.fk_QH_T" FromRole="Tinh" ToRole="QuanHuyen" />
+  </EntityType>
+  <Association Name="fk_DC_QH">
+    <End Role="QuanHuyen" Type="Self.QuanHuyen" Multiplicity="0..1" />
+    <End Role="DiaChi_TGDD" Type="Self.DiaChi_TGDD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuanHuyen">
+        <PropertyRef Name="MaQH" />
+      </Principal>
+      <Dependent Role="DiaChi_TGDD">
+        <PropertyRef Name="MaQH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ND_QH">
+    <End Role="QuanHuyen" Type="Self.QuanHuyen" Multiplicity="0..1" />
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuanHuyen">
+        <PropertyRef Name="MaQH" />
+      </Principal>
+      <Dependent Role="NguoiDung">
+        <PropertyRef Name="MaQH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_QH_T">
+    <End Role="Tinh" Type="Self.Tinh" Multiplicity="0..1" />
+    <End Role="QuanHuyen" Type="Self.QuanHuyen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tinh">
+        <PropertyRef Name="MaTinh" />
+      </Principal>
+      <Dependent Role="QuanHuyen">
+        <PropertyRef Name="MaTinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Model_MapTGDDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DiaChi_TGDD" EntityType="Self.DiaChi_TGDD" />
+    <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
+    <EntitySet Name="QuanHuyens" EntityType="Self.QuanHuyen" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Tinhs" EntityType="Self.Tinh" />
+    <AssociationSet Name="fk_DC_QH" Association="Self.fk_DC_QH">
+      <End Role="QuanHuyen" EntitySet="QuanHuyens" />
+      <End Role="DiaChi_TGDD" EntitySet="DiaChi_TGDD" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ND_QH" Association="Self.fk_ND_QH">
+      <End Role="QuanHuyen" EntitySet="QuanHuyens" />
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_QH_T" Association="Self.fk_QH_T">
+      <End Role="Tinh" EntitySet="Tinhs" />
+      <End Role="QuanHuyen" EntitySet="QuanHuyens" />
+    </AssociationSet>
+    <FunctionImport Name="Sp_Account_Login" ReturnType="Collection(Boolean)">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(MapTGDDModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(MapTGDDModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,94 @@
+﻿
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>Bản đồ Thế Giới Di Động</title>
+	<!-- Favicon-->
+	<!--<link rel="icon" type="image/x-icon" href="~/Assets/IMG/favicon.ico" />-->
+	<link rel="icon" type="image/x-icon" href="~/Assets/IMG/logoTGDD.png" />
+	<!--<img src="~/Assets/IMG/iconGGMap.ico" />-->
+
+	<!-- Core theme CSS (includes Bootstrap)-->
+	<link href="~/Assets/CSS/stylesTemp.css" rel="stylesheet" />
+
+	<!-- add CSS mystyles -->
+	<link href="~/Assets/CSS/leaflet.draw.css" rel="stylesheet" />
+	<link href="~/Assets/leaflet/leaflet.css" rel="stylesheet" />
+
+	<link href="~/Assets/CSS/mystyles.css" rel="stylesheet" />
+
+
+</head>
+<body>
+	<div class="d-flex" id="wrapper">
+		<!-- Sidebar-->
+		@*<div class="border-end bg-white" id="sidebar-wrapper">
+				<div class="sidebar-heading border-bottom bg-light">Ngô Duy Nam <br> B1809485</div>
+				<div class="list-group list-group-flush">
+					<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Thêm Điểm</a>
+					<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
+					<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
+					<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
+					<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
+					<a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
+				</div>
+			</div>*@
+		<!-- Page content wrapper-->
+		<div id="page-content-wrapper">
+			<!-- Top navigation-->
+			<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+				<div class="container-fluid">
+					<button class="btn btn-primary" id="sidebarToggle">Bản đồ Thế giới di động</button>
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+							<li class="nav-item active"><a class="nav-link" href="/Home/Index">Lưu dữ liệu</a></li>
+							<li class="nav-item active"><a class="nav-link" href="/ThemBangJson/Index">Thêm bằng JSON</a></li>
+							@*<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+								<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item" href="#!">Action</a>
+									<a class="dropdown-item" href="#!">Another action</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="#!">Something else here</a>
+								</div>
+							</li>*@
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!-- Page content-->
+			<div class="container-fluid">
+				<div id="map"></div>
+			</div>
+		</div>
+	</div>
+	<!-- Bootstrap core JS-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="~/Assets/JS/scriptsTemp.js"></script>
+
+	<!-- add thu vien-->
+	<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+	<script src="~/Assets/leaflet/leaflet.js"></script>
+	<script src="~/Assets/JS/leaflet.draw.js"></script>
+
+	<!-- add JS myscripts -->
+	@*<script src="~/Assets/JS/myscripts.js"></script>*@
+	<script src="~/Assets/JS/MapTGDD.js"></script>
+
+
+
+
+</body>
+
+</html>
+
