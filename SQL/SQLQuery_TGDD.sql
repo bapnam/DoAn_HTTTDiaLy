@@ -112,10 +112,10 @@ INSERT INTO QuanHuyen VALUES('NC', N'Năm Căn',	'CM');
 GO
 
 -- Them bang nguoi dung
-INSERT INTO NguoiDung VALUES('ND1', N'Nguyễn Văn',		N'Minh',		'ND01',	'BT');
-INSERT INTO NguoiDung VALUES('ND2', N'Ngô Duy',			N'Nam',			'ND02',	'NK');
-INSERT INTO NguoiDung VALUES('ND3', N'Phan Hải',		N'Dương',		'ND03',	'CR');
-INSERT INTO NguoiDung VALUES('ND04', N'Ngô Duy',			N'Nam',			'12345',	'NK');
+INSERT INTO NguoiDung VALUES('ND01', N'Nguyễn Văn',		N'Minh',		'12345',	'BT');
+INSERT INTO NguoiDung VALUES('ND02', N'Ngô Duy',		N'Nam',			'12345',	'NK');
+INSERT INTO NguoiDung VALUES('ND03', N'Phan Hải',		N'Dương',		'12345',	'CR');
+INSERT INTO NguoiDung VALUES('ND04', N'Ngô Duy',		N'Nam',			'12345',	'NK');
 
 GO
 
