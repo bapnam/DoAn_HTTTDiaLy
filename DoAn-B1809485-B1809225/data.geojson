@@ -1,0 +1,89 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Số 37, Trần Huỳnh, Phường 7, Thành phố Bạc Liêu, Tỉnh Bạc Liêu",
+        "MaQH": "TPBL"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.71700185537338,
+          9.29250521315771
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Điện máy Xanh Số F23, TTTM Bạc Liêu, đường Võ Thị Sáu, khóm 01, P. 03, Tp. Bạc Liêu, T. Bạc Liêu",
+        "MaQH": "TPBL"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.72116866707802,
+          9.285690419679039
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Thế Giới Di Động Số 979 - 981 Nguyễn Trung Trực, P. An Bình, TP. Rạch Giá, T. Kiên Giang",
+        "MaQH": "TPRG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.11607170104979,
+          9.963313530959203
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Thế Giới Di Động Số 1125A Mạc Cửu, KP. Nguyễn Thái Bình, P. Vĩnh Quang, Tp. Rạch Giá, T. Kiên Giang",
+        "MaQH": "TPRG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.07518947124481,
+          10.046967244932215
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Thế Giới Di Động Thửa đất số 197, Tờ bản đồ số 16 và Thửa Ấp Thị Tường A, Xã Hưng Mỹ, Huyện Cái Nước, Tỉnh Cà Mau",
+        "MaQH": "CN"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          105.0158429145813,
+          8.9385770119074
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Thế Giới Di Động Số 00780 khu vực 1, đường Nguyễn Tất Thành, Khóm 2, Thị Trấn Năm Căn, Huyện Năm Căn, Tỉnh Cà Mau",
+        "MaQH": "NC"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.99417066574097,
+          8.76354276094959
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+﻿#map {
+	width: auto;
+	height: 650px;
+}
+
+
+#text {
+	height: 100%;
+	width: auto;
+	
+}
+
+#geojsontext1 {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	width: 100%;
+	height: 89%;
+}
+
+
+#submit1, #submit2 {
+	margin: 5px;
+}
+
+html {
+	height: 100%;
+}
